@@ -4,14 +4,16 @@ public class Main {
     public static void main(String[] args) {
         task1();
         task2();
+        task3();
 
     }
-    public static void task1 () {
+
+    public static void task1() {
         System.out.println("\n" + "Задача №1" + "\n");
-        //Является год високосным или нет
         int yearNow = 2023;
         equelYear(yearNow);
     }
+
     public static void equelYear(int y) {
         int n = y;
         int everyFour = 4;
@@ -24,37 +26,55 @@ public class Main {
             System.out.println(n + " год не является високосным");
         }
     }
+
     public static void task2() {
         System.out.println("\n" + "Задача №2" + "\n");
-        int clientOS = 0;
-        int clientDeviceYear = 2023;
+        int clientOS = 1;
+        int clientDeviceYear = 2022;
 
         getApplication(clientOS, clientDeviceYear);
-
-
     }
+
     public static void getApplication(int a, int b) {
         int currentYear = LocalDate.now().getYear();
-        boolean rulesIosOld = true;
-        rulesIosOld = a == 0 && b < currentYear;
-        boolean rulesAndOld = true;
-        rulesAndOld = a == 1 && b < currentYear;
-        boolean rulesIosNew = true;
-        rulesIosNew = a == 0 && b >= currentYear;
-        boolean rulesAndNew = true;
-        rulesAndNew = a == 1 && b >= currentYear;
+        boolean rulesApi = b < currentYear;
 
-        if (rulesIosOld) {
-            System.out.println("Установите облегченную версию приложения для iOS по ссылке");
+        if (a == 0) {
+            if (rulesApi) {
+                System.out.println("Установите облегченную версию приложения для iOS по ссылке");
+            } else {
+                System.out.println("Установите версию приложения для iOS по ссылке");
+            }
+        } else if (a == 1) {
+            if (rulesApi) {
+                System.out.println("Установите облегченную версию приложения для Android по ссылке");
+            } else {
+                System.out.println("Установите версию приложения для Android по ссылке");
+            }
         }
-        else if(rulesIosNew) {
-            System.out.println("Установите версию приложения для iOS по ссылке");
-        }
-        else if (rulesAndOld) {
-            System.out.println("Установите облегченную версию приложения для Android по ссылке");
-        }
-        else if(rulesAndNew) {
-            System.out.println("Установите версию приложения для Android по ссылке");
+    }
+
+    public static void task3() {
+        System.out.println("\n" + "Задача №3" + "\n");
+        int deliveryDistance = 100;
+        getDelivery(deliveryDistance);
+    }
+    public static void getDelivery(int a) {
+        boolean oneDelivery = a < 20;
+        boolean twoDelivery = a >= 20 && a < 60;
+        boolean threeDelivery = a >= 60 && a < 100;
+
+        if (oneDelivery) {
+            int timeOfDelivery = 1;
+            System.out.println("Потребуется дней: " + timeOfDelivery);
+        } else if (twoDelivery) {
+            int timeOfDelivery = 2;
+            System.out.println("Потребуется дней: " + timeOfDelivery);
+        } else if (threeDelivery) {
+            int timeOfDelivery = 3;
+            System.out.println("Потребуется дней: " + timeOfDelivery);
+        } else {
+            System.out.println("Доставка не осуществляется");
         }
     }
 }
