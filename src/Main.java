@@ -56,25 +56,26 @@ public class Main {
 
     public static void task3() {
         System.out.println("\n" + "Задача №3" + "\n");
-        int deliveryDistance = 100;
-        getDelivery(deliveryDistance);
+        int deliveryDistance = 2;
+        if (deliveryDistance < 100) {
+            System.out.println("Потребуется дней: " + getDelivery(deliveryDistance));
+        } else {
+            System.out.println("Доставка не осуществляется");
+        }
+
     }
-    public static void getDelivery(int a) {
+
+    public static int getDelivery(int a) {
         boolean oneDelivery = a < 20;
         boolean twoDelivery = a >= 20 && a < 60;
         boolean threeDelivery = a >= 60 && a < 100;
 
-        if (oneDelivery) {
-            int timeOfDelivery = 1;
-            System.out.println("Потребуется дней: " + timeOfDelivery);
-        } else if (twoDelivery) {
-            int timeOfDelivery = 2;
-            System.out.println("Потребуется дней: " + timeOfDelivery);
-        } else if (threeDelivery) {
-            int timeOfDelivery = 3;
-            System.out.println("Потребуется дней: " + timeOfDelivery);
-        } else {
-            System.out.println("Доставка не осуществляется");
-        }
+        if (oneDelivery)
+            return 1;
+        else if (twoDelivery)
+            return 2;
+        else if (threeDelivery)
+            return 3;
+        return a;
     }
 }
